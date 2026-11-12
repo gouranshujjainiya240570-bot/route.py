@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusRide — Smart Campus Transit</title>
+  <link rel="stylesheet" href="/static/stlye011.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- BACKGROUND GLOWS FOR GLASSMORPHISM -->
+  <div class="glow-bg">
+    <div class="glow-circle glow-1"></div>
+    <div class="glow-circle glow-2"></div>
+  </div>
+  <!-- LOGIN PAGE -->
+  <div id="login-section" class="active-section">
+    <div class="login-left">
+      <div class="login-logo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+            <circle cx="7" cy="17" r="2" />
+            <circle cx="17" cy="17" r="2" />
+            <path d="M5 10h5v3H5z" />
+          </svg>
+        </div>
+        <span class="logo-name">CampusRide</span>
+      </div>
+      <div class="login-hero">
+        <h1>Your campus<br>transport,<br><span class="accent">reimagined.</span></h1>
+        <p>Real-time tracking, schedule management, and instant route announcements in one unified dashboard.</p>
+        <ul class="feature-list">
+          <li>
+            <span class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </span> Secure student & admin portals
+          </li>
+          <li>
+            <span class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </span> Live scheduling & updates
+          </li>
+          <li>
+            <span class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+            </span> Instant delay notifications
+          </li>
+        </ul>
+      </div>
+      <p class="login-footer">© 2026 CampusRide · University Transit Systems</p>
+    </div>
+    <div class="login-right">
+      <div class="login-card-container">
+        <div class="login-card">
+          <!-- ROLE SELECTION VIEW -->
+          <div id="role-selection-view">
+            <h2>Welcome</h2>
+            <p class="login-sub">Choose your portal to continue</p>
+            <div class="role-buttons" style="display: flex; flex-direction: column; gap: 16px;">
+              <button id="select-student-btn"
+                style="width: 100%; padding: 15px; background: var(--grad-primary); color: #fff; border: none; border-radius: var(--radius-md); font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-glow-blue); transition: all 0.3s;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Student Portal
+              </button>
+              <button id="select-admin-btn"
+                style="width: 100%; padding: 15px; background: var(--grad-admin); color: #fff; border: none; border-radius: var(--radius-md); font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); transition: all 0.3s;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Admin Portal
+              </button>
+            </div>
+          </div>
+          <!-- SIGN IN FORM -->
+          <div id="signin-view" style="display:none;">
+            <button id="back-to-roles-btn"
+              style="background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 0.85rem; margin-bottom: 16px; padding: 0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
+              Back
+            </button>
+            <h2 id="signin-title">Sign in</h2>
+            <p class="login-sub" id="signin-sub">Access your customized transit center</p>
+            <form id="login-form">
+              <div class="field-group">
+                <label for="email">Email address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </span>
+                  <input type="email" id="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+              </div>
+              <button type="submit" id="login-btn">
+                <span>Sign In</span>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </form>
+            <div class="auth-switch" id="auth-switch-container">
+              <p><span id="auth-switch-text">New student?</span> <a href="#" id="show-register-btn">Create an
+                  account</a></p>
+            </div>
+          </div>
+          <!-- REGISTRATION FORM -->
+          <div id="register-view" style="display:none;">
+            <h2 id="register-title">Register</h2>
+            <p class="login-sub" id="register-sub">Create your student transit account</p>
+            <form id="register-form">
+              <div class="field-group">
+                <label for="reg-name">Full Name</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <input type="text" id="reg-name" placeholder="e.g. Krishna Patel" required>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="reg-email">Email address</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </span>
+                  <input type="email" id="reg-email" placeholder="you@student.edu" required>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="reg-password">Password</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <input type="password" id="reg-password" placeholder="Create a password" required>
+                </div>
+              </div>
+              <div class="field-group" id="reg-route-group">
+                <label for="reg-route">Select Your Route</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 18V5l6-2v13M9 5 3 7v13l6-2M15 3l6 2v13l-6-2" />
+                    </svg>
+                  </span>
+                  <select id="reg-route" required>
+                    <option value="">Loading routes...</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" id="register-btn">
+                <span>Create Account</span>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </form>
+            <div class="auth-switch">
+              <p>Already have an account? <a href="#" id="show-login-btn">Sign in</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- STUDENT DASHBOARD -->
+  <div id="student-dashboard" class="dashboard-view" style="display:none;">
+    <!-- Top nav -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-brand">
+          <div class="brand-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+          </div>
+          <span>CampusRide <span class="role-badge">Student</span></span>
+        </div>
+        <div class="topbar-user">
+          <div class="avatar" id="student-avatar"></div>
+          <span id="student-nav-name"></span>
+          <button class="logout-btn" id="student-logout-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="dash-main">
+      <!-- Hero -->
+      <div class="dash-hero">
+        <div class="hero-left">
+          <p class="hero-label">Student Transit Center</p>
+          <h2 class="hero-title">Welcome back, <span id="student-welcome-name"></span></h2>
+          <p class="hero-date" id="student-hero-date"></p>
+        </div>
+        <div class="live-badge">
+          <span class="pulse-dot"></span> Live Transit Updates
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="student-stat-buses">0</div>
+            <div class="stat-label">Active Buses</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon icon-indigo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="student-stat-stops">0</div>
+            <div class="stat-label">Route Stops</div>
+          </div>
+        </div>
+        <div class="stat-card" id="student-alerts-card" style="cursor: pointer;" title="Click to view alerts">
+          <div class="stat-icon icon-amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="student-stat-notices">0</div>
+            <div class="stat-label">Transit Alerts</div>
+          </div>
+        </div>
+      </div>
+      <!-- Search Section -->
+      <section class="section animate-fade-in">
+        <div class="section-heading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          Find Route &amp; Bus
+        </div>
+        <div class="search-card glass">
+          <div class="search-input-wrap">
+            <input type="text" id="student-search-input" placeholder="Search by route name, stop, or bus number..." />
+            <button type="button" id="student-search-btn" class="action-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              Search
+            </button>
+          </div>
+          <div id="search-results" class="search-results-container" style="display:none;"></div>
+        </div>
+      </section>
+      <!-- Route Card -->
+      <section class="section animate-fade-in">
+        <div class="section-heading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="m16.2 7.8-2 2c-.2.2-.5.2-.7 0l-.6-.6a.5.5 0 0 0-.7 0l-2 2a.5.5 0 0 0 0 .7l.6.6c.2.2.2.5 0 .7l-2 2" />
+          </svg>
+          Assigned Route
+        </div>
+        <div class="route-card glass">
+          <div class="route-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18V5l6-2v13M9 5 3 7v13l6-2M15 3l6 2v13l-6-2" />
+            </svg>
+          </div>
+          <div class="route-details">
+            <p id="student-route-info" class="route-title">Loading Route...</p>
+            <p class="route-sub">Main campus shuttle corridor</p>
+          </div>
+        </div>
+      </section>
+      <!-- Buses + Stops Row -->
+      <div class="two-col">
+        <!-- Buses Column -->
+        <section class="section">
+          <div class="section-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+            Buses On Route
+          </div>
+          <ul id="student-bus-list" class="grid-list">
+            <!-- Dynamic Buses Rendered Here -->
+          </ul>
+        </section>
+        <!-- Stops Column -->
+        <section class="section">
+          <div class="section-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Route Stops Timeline
+          </div>
+          <div class="stops-card glass">
+            <ul id="student-stop-list" class="timeline-list">
+              <!-- Dynamic Stops Rendered Here -->
+            </ul>
+          </div>
+        </section>
+      </div>
+      <!-- Alerts & Notices -->
+      <section class="section" id="student-notices-section">
+        <div class="section-heading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          Important Bulletins
+        </div>
+        <ul id="student-notice-list" class="notice-list-container">
+          <!-- Dynamic Alerts Rendered Here -->
+        </ul>
+      </section>
+    </main>
+  </div>
+  <!-- DRIVER DASHBOARD -->
+  <div id="driver-dashboard" class="dashboard-view" style="display:none;">
+    <!-- Top nav -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-brand">
+          <div class="brand-icon driver-brand-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+          </div>
+          <span>CampusRide <span class="role-badge driver-badge">Driver Portal</span></span>
+        </div>
+        <div class="topbar-user">
+          <div class="avatar driver-avatar" id="driver-avatar">DR</div>
+          <span id="driver-nav-name">Driver Console</span>
+          <button class="logout-btn" id="driver-logout-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="dash-main">
+      <!-- Hero -->
+      <div class="dash-hero driver-hero">
+        <div class="hero-left">
+          <p class="hero-label">Driver Transit Console</p>
+          <h2 class="hero-title">Welcome back, <span id="driver-welcome-name"></span></h2>
+          <p class="hero-date" id="driver-hero-date"></p>
+        </div>
+        <div class="live-badge driver-live-badge">
+          <span class="pulse-dot"></span> GPS Transmitting
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="driver-stat-bus">Loading...</div>
+            <div class="stat-label">Assigned Vehicle</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon icon-indigo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="driver-stat-route">Loading...</div>
+            <div class="stat-label">Assigned Corridor</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GPS Control Section -->
+      <section class="section animate-fade-in">
+        <div class="section-heading">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path
+              d="m16.2 7.8-2 2c-.2.2-.5.2-.7 0l-.6-.6a.5.5 0 0 0-.7 0l-2 2a.5.5 0 0 0 0 .7l.6.6c.2.2.2.5 0 .7l-2 2" />
+          </svg>
+          GPS Simulation Console
+        </div>
+        <div class="control-box glass" style="padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div>
+              <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Current Location</p>
+              <h3 style="margin: 5px 0 0 0;" id="driver-coordinates">Latitude: 22.7196, Longitude: 75.8577</h3>
+            </div>
+            <button id="update-gps-btn" class="action-btn" style="margin: 0; padding: 10px 20px;">
+              ⚡ Broadcast GPS Ping
+            </button>
+          </div>
+          <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+            Use this console to simulate your bus's real-time movement. Pressing the button will update the coordinates
+            with slight random changes along the Route corridor, triggering database synchronization.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ADMIN DASHBOARD -->
+  <div id="admin-dashboard" class="dashboard-view" style="display:none;">
+    <!-- Top nav -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-brand">
+          <div class="brand-icon admin-brand-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+          <span>CampusRide <span class="role-badge admin-badge">Admin Portal</span></span>
+        </div>
+        <div class="topbar-user">
+          <div class="avatar admin-avatar" id="admin-avatar">AD</div>
+          <span id="admin-nav-name">Transit Control</span>
+          <button class="logout-btn" id="admin-logout-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="dash-main">
+      <!-- Hero -->
+      <div class="dash-hero admin-hero">
+        <div class="hero-left">
+          <p class="hero-label">Transit Command Center</p>
+          <h2 class="hero-title">Systems Controller</h2>
+          <p class="hero-date" id="admin-hero-date"></p>
+        </div>
+        <div class="live-badge admin-live-badge">
+          <span class="pulse-dot"></span> System Live & Configurable
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h10a2 2 0 0 0 4 0Z" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </svg>
+          </div>
+          <div class="stat-info">
+          <div class="stat-value" id="admin-stat-buses">0</div>
+            <div class="stat-label">Active Routes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon icon-indigo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="admin-stat-stops">0</div>
+            <div class="stat-label">Defined Stops</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon icon-amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="admin-stat-notices">0</div>
+            <div class="stat-label">Active Notices</div>
+          </div>
+        </div>
+      </div>
+      <!-- Main Controls grid -->
+      <div class="two-col">
+        <!-- Notice Manager Column -->
+        <section class="section glass-section">
+          <div class="section-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+            Broadcast Alerts & Notices
+          </div>
+          <div class="control-box glass">
+            <form id="add-notice-form" class="form-container">
+              <div class="field-group">
+                <label for="notice-target-route">Target Route (optional)</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 18V5l6-2v13M9 5 3 7v13l6-2M15 3l6 2v13l-6-2" />
+                    </svg>
+                  </span>
+                  <select id="notice-target-route">
+                    <option value="">All Routes (General Notice)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-group">
+                <label for="notice-text">Notice Alert Content</label>
+                <textarea id="notice-text"
+                  placeholder="Enter transit delay details, route adjustments, or emergency announcements..." rows="3"
+                  required></textarea>
+              </div>
+              <button type="submit" class="action-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+                Broadcast Notice
+              </button>
+            </form>
+          </div>
+          <div class="list-title">Active Bulletins</div>
+          <ul id="admin-notice-list" class="admin-data-list">
+            <!-- Dynamic notices for admin to delete -->
+          </ul>
+        </section>
+        <!-- Bus Manager Column -->
+        <section class="section glass-section">
+          <div class="section-heading">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="9" y1="3" x2="9" y2="21" />
+              <line x1="15" y1="3" x2="15" y2="21" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="3" y1="15" x2="21" y2="15" />
+            </svg>
+            Manage Active Buses
+          </div>
+          <div class="control-box glass">
+            <form id="add-bus-form" class="form-grid">
+              <div class="field-group">
+                <label for="bus-number">Bus ID</label>
+                <input type="text" id="bus-number" placeholder="e.g. BUS-105" required>
+              </div>
+              <div class="field-group">
+                <label for="bus-driver">Driver Name</label>
+                <input type="text" id="bus-driver" placeholder="e.g. Anand Sharma" required>
+              </div>
+              <div class="field-group">
+                <label for="bus-departure">Departure Time</label>
+                <input type="time" id="bus-departure" required>
+              </div>
+              <div class="field-group">
+                <label for="bus-arrival">Arrival Time</label>
+                <input type="time" id="bus-arrival" required>
+              </div>
+              <button type="submit" class="action-btn col-span-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Register & Dispatch Bus
+              </button>
+            </form>
+          </div>
+          <div class="list-title">Registered Buses</div>
+          <ul id="admin-bus-list" class="admin-data-list">
+            <!-- Dynamic buses for admin to delete -->
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="/static/script011.js"></script>
+</body>
+
+</html>
